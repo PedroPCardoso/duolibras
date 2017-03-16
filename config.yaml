@@ -1,0 +1,11 @@
+# do not touch this line
+configVersion: 2
+
+description: duolibras
+keywords: duolibras
+name: duolibras
+displayName: Duolibras
+services:
+  faceTest:
+    engine: detection
+    type: demographics
