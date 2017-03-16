@@ -10,9 +10,18 @@
 var demographicsPromise = matrix.service('demographics').start();
 demographicsPromise.then(function(demographicsData) {
   var emotion = demographicsData.emotion;
-  if (emotion === "Happy"){
-    matrix.led('red').render();
+  if (emotion === "HAPPY"){
+    matrix.led('yellow').render();
 
+  }
+  if (emotion === "CONFUSE"){
+
+    matrix.led('red').render();
+  }
+
+  if(emotion === "CALM"){
+
+    matrix.led('blue');
   }
 
 });
