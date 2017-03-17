@@ -7,8 +7,8 @@
 // token = spotifyApi.getAccessToken();
 // spotifyApi.setAccessToken(token);
 
-const SpotifyWebApi = require('spotify-web-api-node');
-const SpotifyControl = require('spotify-control');
+var SpotifyWebApi = require('spotify-web-api-node');
+var SpotifyControl = require('spotify-control');
 
 var spotifyApi = new SpotifyWebApi({
   clientId: '5bbdc263f42244bdb1da7ccfd8d33de6',
@@ -24,20 +24,11 @@ var spotifyControl = new SpotifyControl({
 var demographicsPromise = matrix.service('demographics').start();
 
 demographicsPromise.then(function(demographicsData) {
-  var emotion = demographicsData.emotion;
-  if (emotion === "HAPPY"){
-    matrix.led('yellow').render();
+  var emotion = demographicsData.demographics.emotion;
+  console.log(emotion);
 
-  }
-  if (emotion === "CONFUSE"){
-
-    matrix.led('red').render();
-  }
-
-  if(emotion === "CALM"){
-
-    matrix.led('blue');
-  }
+  var emotions = {"HAPPY": "yellow", "SAD": "red", "CONFUSED": "blue", "ANGRY": "green", "CALM": "white", "SURPRISED": "purple", "DISGUST": "brown"};
+  matrix.led(emotions[emotion]).render();
 
 
   spotifyApi.searchPlaylists(emotion, {
@@ -57,17 +48,17 @@ demographicsPromise.then(function(demographicsData) {
 
 function play(uri) {
 
-  spotifyControl.connect().then(v => {
+  spotifyControl.connect().then(function(v) {
       console.log("Started");
-      spotifyControl.play(uri).then(v => {
+      spotifyControl.play(uri).then(function(v) {
           console.log("playing");
-          spotifyControl.startListener(["play", "pause"]).on("event", data => {
+          spotifyControl.startListener(["play", "pause"]).on("event", function (data)  {
               console.log(JSON.stringify(data, null, 4));
           });
-      }, err => {
+      }, function (err){
           console.error(err);
       });
-  }, err => {
+  }, function(err)  {
       console.error("Failed to start: " + err.message);
   });
 }

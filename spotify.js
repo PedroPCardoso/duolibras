@@ -29,15 +29,24 @@ function play(uri) {
 
   spotifyControl.connect().then(v => {
       console.log("Started");
+      console.log("aquiiiiiiiiiii #######");
+      console.log(v);
+      console.log("aquiiiiiiiiiii #######");
       spotifyControl.play(uri).then(v => {
           console.log("playing");
+          console.log("aquiiiiiiiiiii ######2#");
+          console.log(v);
+          console.log("aquiiiiiiiiiii #######");
           spotifyControl.startListener(["play", "pause"]).on("event", data => {
               console.log(JSON.stringify(data, null, 4));
+
           });
-      }, err => {
+      },
+       err => {
           console.error(err);
       });
   }, err => {
       console.error("Failed to start: " + err.message);
   });
+
 }

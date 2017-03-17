@@ -1,11 +1,11 @@
 # do not touch this line
 configVersion: 2
 
-description: duolibras
-keywords: duolibras
-name: duolibras
-displayName: Duolibras
+description: moodify
+keywords: moodify
+name: moodify
+displayName: Moodify
 services:
-  faceTest:
+  moodify:
     engine: detection
     type: demographics
