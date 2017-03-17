@@ -29,9 +29,9 @@ matrix.on('emailInput', function(p){
 
 
 var demographicsPromise = matrix.service('demographics').start();
-
+var emotion;
 demographicsPromise.then(function(demographicsData) {
-  var emotion = demographicsData.demographics.emotion;
+  emotion = demographicsData.demographics.emotion;
   console.log(emotion);
 
   var emotions = {"HAPPY": "yellow", "SAD": "red", "CONFUSED": "blue", "ANGRY": "green", "CALM": "white", "SURPRISED": "purple", "DISGUST": "brown"};
