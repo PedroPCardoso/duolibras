@@ -1,18 +1,43 @@
+const SpotifyWebApi = require('spotify-web-api-node');
 const SpotifyControl = require('spotify-control');
-var spotify = new SpotifyControl({
+
+var spotifyApi = new SpotifyWebApi({
+  clientId: '5bbdc263f42244bdb1da7ccfd8d33de6',
+  clientSecret: '922ba87fb9f64183a27016b1721220c1',
+  accessCode: 'NAowChgKB1Nwb3RpZnkSABoGmAEByAEBJWKvy1gSFHNPKPoprAvIKc-jtdcHFsvppHwb'
+
+});
+
+var spotifyControl = new SpotifyControl({
     token: "NAowChgKB1Nwb3RpZnkSABoGmAEByAEBJY-wy1gSFCSkr4L80W3-YpgwNf-UPfyZlJp3"
 });
 
-spotify.connect().then(v => {
-    console.log("Started");
-    spotify.play("spotify:track:4LYt31Tg51qsQqWOaZn4C6", "spotify:artist:5byg90wTxATnhB6kK253DF").then(v => {
-        console.log("Played");
-        spotify.startListener(["play", "pause"]).on("event", data => {
-            console.log(JSON.stringify(data, null, 4));
-        });
-    }, err => {
-        console.error(err);
-    });
-}, err => {
-    console.error("Failed to start: " + err.message);
-})
+spotifyApi.searchPlaylists('HAPPY', {
+  country: 'BR',
+  limit: 10
+}, function (err, data) {
+
+  if(err) return console.log(err);
+
+  var playlists = data.body.playlists.items;
+  var playlist_index = Math.floor((Math.random() * 10));
+
+  play(playlists[playlist_index].uri);
+});
+
+function play(uri) {
+
+  spotifyControl.connect().then(v => {
+      console.log("Started");
+      spotifyControl.play(uri).then(v => {
+          console.log("playing");
+          spotifyControl.startListener(["play", "pause"]).on("event", data => {
+              console.log(JSON.stringify(data, null, 4));
+          });
+      }, err => {
+          console.error(err);
+      });
+  }, err => {
+      console.error("Failed to start: " + err.message);
+  });
+}
