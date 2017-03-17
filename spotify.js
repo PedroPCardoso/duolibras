@@ -1,6 +1,6 @@
 const SpotifyControl = require('spotify-control');
 var spotify = new SpotifyControl({
-    token: "YOUR_SPOTIFY_TOKEN"
+    token: "NAowChgKB1Nwb3RpZnkSABoGmAEByAEBJY-wy1gSFCSkr4L80W3-YpgwNf-UPfyZlJp3"
 });
 
 spotify.connect().then(v => {
