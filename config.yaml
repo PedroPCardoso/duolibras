@@ -1,13 +1,19 @@
 # do not touch this line
 configVersion: 2
 
-description: App verify you mood, sending playlist for email.
+description: Moodify your day! Listen to musics on Spotify according to your mood.
 keywords: Spotify
 name: moodify
 displayName: Moodify
 
 dataTypes:
   playlist: string
+
+inputTest:
+  control: input
+  event: emailInput
+  value: 'Type your email'
+  label: 'Email'
 
 services:
   moodify:
