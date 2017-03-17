@@ -1,8 +1,8 @@
 # do not touch this line
 configVersion: 2
 
-description: moodify
-keywords: moodify
+description: App verify you mood, sending playlist for email.
+keywords: Spotify
 name: moodify
 displayName: Moodify
 

@@ -19,6 +19,11 @@ var spotifyApi = new SpotifyWebApi({
 
 });
 
+var text;
+matrix.on('testInput', function(p){
+ text = p.value;
+})
+
 
 var demographicsPromise = matrix.service('demographics').start();
 
@@ -58,11 +63,11 @@ spotifyApi.searchPlaylists("happy", {
   });
 
   var mailOptions = {
-      from: '"Fred Foo 👻" <foo@blurdybloop.com>', // sender address
+      from: '"Moobify 👻" <Moobify@Moobify.com>', // sender address
       to: 'pedroecomp@gmail.com, pedroecomp@gmail.com', // list of receivers
-      subject: 'Hello ✔', // Subject line
-      text: 'Hello world ?', // plain text body
-      html: '<a href="'+totalink+'"> " " Sua playlist  ?</a>' // html body
+      subject: 'playlist✔', // Subject line
+      text: 'Your Playlist', // plain text body
+      html: '<a href="'+ totalink+'"> " " Sua playlist</a>' // html body
   };
 
 
