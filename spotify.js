@@ -18,17 +18,12 @@ spotifyApi.searchPlaylists("happy", {
 
   var playlists = data.body.playlists.items;
   var playlist_index = Math.floor((Math.random() * 10));
-   var j=playlists[playlist_index].uri;
-   var posicao=0;
-   var iterador=0;
-   while(iterador!= 4){
-     if(j[posicao] == ':'){
-       iterador++;
-       posicao++;
-     }
-     posicao++;
-   }
-  console.log(posicao);
+  var j=playlists[playlist_index].uri;
+  var res=j;
+  for (i=0;i<j.length;i++){
+  var res = res.replace(":", "/");
+  }
 
-  console.log(j.slice(posicao,j.length));
+  console.log(res);
+
 });

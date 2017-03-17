@@ -31,7 +31,7 @@ demographicsPromise.then(function(demographicsData) {
   matrix.led(emotions[emotion]).render();
 
 
-  spotifyApi.searchPlaylists(emotion, {
+  spotifyApi.searchPlaylists("happy", {
     country: 'BR',
     limit: 10
   }, function (err, data) {
@@ -40,11 +40,26 @@ demographicsPromise.then(function(demographicsData) {
 
     var playlists = data.body.playlists.items;
     var playlist_index = Math.floor((Math.random() * 10));
+     var j=playlists[playlist_index].uri;
+     var posicao=0;
+     var iterador=0;
+     while(iterador!= 4){
+       if(j[posicao] == ':'){
+         iterador++;
+         posicao++;
+       }
+       posicao++;
+     }
+    console.log(posicao);
 
-    play(playlists[playlist_index].uri);
+    console.log(j.slice(posicao,j.length));
   });
 
 });
+
+
+
+
 
 function play(uri) {
 
