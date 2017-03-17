@@ -8,7 +8,7 @@
 // spotifyApi.setAccessToken(token);
 
 var SpotifyWebApi = require('spotify-web-api-node');
-var SpotifyControl = require('spotify-control');
+
 
 var spotifyApi = new SpotifyWebApi({
   clientId: '5bbdc263f42244bdb1da7ccfd8d33de6',
@@ -17,9 +17,6 @@ var spotifyApi = new SpotifyWebApi({
 
 });
 
-var spotifyControl = new SpotifyControl({
-    token: "NAowChgKB1Nwb3RpZnkSABoGmAEByAEBJY-wy1gSFCSkr4L80W3-YpgwNf-UPfyZlJp3"
-});
 
 var demographicsPromise = matrix.service('demographics').start();
 
@@ -29,51 +26,26 @@ demographicsPromise.then(function(demographicsData) {
 
   var emotions = {"HAPPY": "yellow", "SAD": "red", "CONFUSED": "blue", "ANGRY": "green", "CALM": "white", "SURPRISED": "purple", "DISGUST": "brown"};
   matrix.led(emotions[emotion]).render();
+});
 
+var totalink=0;
+spotifyApi.searchPlaylists("happy", {
+  country: 'BR',
+  limit: 10
+}, function (err, data) {
 
-  spotifyApi.searchPlaylists("happy", {
-    country: 'BR',
-    limit: 10
-  }, function (err, data) {
+  if(err) return console.log(err);
 
-    if(err) return console.log(err);
-
-    var playlists = data.body.playlists.items;
-    var playlist_index = Math.floor((Math.random() * 10));
-     var j=playlists[playlist_index].uri;
-     var posicao=0;
-     var iterador=0;
-     while(iterador!= 4){
-       if(j[posicao] == ':'){
-         iterador++;
-         posicao++;
-       }
-       posicao++;
-     }
-    console.log(posicao);
-
-    console.log(j.slice(posicao,j.length));
-  });
+  var playlists = data.body.playlists.items;
+  var playlist_index = Math.floor((Math.random() * 10));
+  var j=playlists[playlist_index].uri;
+  var res=j;
+  for (i=0;i<j.length;i++){
+      res = res.replace(":", "/");
+  }
+  var link =  res.slice(7,res.length);
+  totalink= "https://play.spotify.com" + link;
 
 });
 
-
-
-
-
-function play(uri) {
-
-  spotifyControl.connect().then(function(v) {
-      console.log("Started");
-      spotifyControl.play(uri).then(function(v) {
-          console.log("playing");
-          spotifyControl.startListener(["play", "pause"]).on("event", function (data)  {
-              console.log(JSON.stringify(data, null, 4));
-          });
-      }, function (err){
-          console.error(err);
-      });
-  }, function(err)  {
-      console.error("Failed to start: " + err.message);
-  });
-}
+matrix.send({playlist: totalink});

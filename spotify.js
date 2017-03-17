@@ -25,5 +25,8 @@ spotifyApi.searchPlaylists("happy", {
   }
 
   console.log(res);
+  var link =  res.slice(7,res.length);
+  totalink= "https://play.spotify.com"+ link;
+  window.load(totalink);
 
 });

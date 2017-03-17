@@ -5,6 +5,10 @@ description: moodify
 keywords: moodify
 name: moodify
 displayName: Moodify
+
+dataTypes:
+  playlist: string
+
 services:
   moodify:
     engine: detection
