@@ -1,19 +1,13 @@
 # do not touch this line
 configVersion: 2
 
-description: Moodify your day! Listen to musics on Spotify according to your mood.
-keywords: Spotify
+description: moodify
+keywords: moodify
 name: moodify
 displayName: Moodify
 
 dataTypes:
   playlist: string
-
-inputTest:
-  control: input
-  event: emailInput
-  value: 'Type your email'
-  label: 'Email'
 
 services:
   moodify:
