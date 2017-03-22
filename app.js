@@ -80,4 +80,4 @@ demographicsPromise.then(function(demographicsData) {
 
 
 
- // matrix.send({playlist: totalink});
+ matrix.send({playlist: totalink});

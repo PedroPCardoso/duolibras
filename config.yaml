@@ -1,13 +1,20 @@
 # do not touch this line
 configVersion: 2
 
-description: moodify
-keywords: moodify
+description: Moodify your day! Listen to musics on Spotify according to your mood.
+keywords:
+  - moodify
+  - spotify
+
 name: moodify
 displayName: Moodify
-
+categories:
+  - entreteriment
 dataTypes:
   playlist: string
+
+imageurls: http://i.imgur.com/HdbIsbG.jpg
+galery:  http://i.imgur.com/HdbIsbG.jpg
 
 services:
   moodify:
