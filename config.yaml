@@ -1,20 +1,29 @@
 # do not touch this line
 configVersion: 2
 
+name: moodify
+
 description: Moodify your day! Listen to musics on Spotify according to your mood.
+
+
+imageUrls:
+  - http://i.imgur.com/HdbIsbG.jpg
+  - http://i.imgur.com/HdbIsbG.jpg
+
+galleryUrl:  http://i.imgur.com/YIu8Mfv.png
+
+
+
 keywords:
   - moodify
   - spotify
 
-name: moodify
 displayName: Moodify
 categories:
-  - entreteriment
+  - Entertainment
+
 dataTypes:
   playlist: string
-
-imageurls: http://i.imgur.com/HdbIsbG.jpg
-galery:  http://i.imgur.com/HdbIsbG.jpg
 
 services:
   moodify:
