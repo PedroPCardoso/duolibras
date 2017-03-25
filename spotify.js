@@ -22,6 +22,7 @@ var SpotifyWebApi = require('spotify-web-api-node');
     for (i=0;i<j.length;i++){
       var res = res.replace(":", "/");
     }
+
     res =  res.split("spotify");
 
   console.log("play.spotify.com"+res[1]);

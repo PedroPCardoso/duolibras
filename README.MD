@@ -1,8 +1,21 @@
-This is your app folder. Please only change app.js and config.yaml.
+<h1>Moodify</h1>
 
-Do not modify index.js.
 
-You may add packages via `npm`, they will be installed when the application is deployed to a device. 
+Describe:
+ Moodify will send a playlist to your email according to your mood detected by MATRIX.
+
+ packages used:
+ -> Spotify web api node
+ -> nodemailer
+
+
+---->TEAM
+programmers:
+'Pedro Cardoso', 'email: pedroecomp@gmail.com',
+'Luan Rios' , 'email : luan.rios.campos@gmail.com',
+
+collaborator:
+ 'Rejanio Moraes', 'email. : rejaniomoraes@gmail.com'
 
 ## Developer Documentation
 
